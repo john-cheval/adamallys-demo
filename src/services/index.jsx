@@ -131,18 +131,31 @@ async function getSingleNewsAndEvents(slug) {
 }
 
 async function getFooter() {
-  const params = qs.stringify({
-    populate: [
-      "Logo",
-      "Adamallys_Group",
-      "AdamallysGroup2",
-      "AdamallysLLC",
-      "AdamallysMarineShipChandlingServices",
-      "Buttons",
-      "Socials.Icon",
-      "Side_Sticky_Links.Icon",
-    ],
-  });
+  const params = qs.stringify(
+    {
+      populate: {
+        Logo: {
+          fields: ["url"],
+        },
+        Adamallys_Group: true,
+        AdamallysGroup2: true,
+        AdamallysLLC: true,
+        AdamallysMarineShipChandlingServices: true,
+        Buttons: true,
+        Side_Sticky_Links: {
+          fields: ["link"],
+          populate: {
+            Icon: {
+              fields: ["url"],
+            },
+          },
+        },
+      },
+      fields: ["About", "Copyright_Text"],
+    },
+    { encode: false }
+  );
+
   const responce = await Axios(`/footer?${params}`);
   return responce.data?.attributes;
 }
@@ -186,7 +199,12 @@ async function getDryDockingService() {
 
 async function getHeader() {
   const params = qs.stringify({
-    populate: ["Logo", "NavLinks", "Button", "Secound_Header_Nav"],
+    populate: {
+      Logo: {
+        fields: ["url"],
+      },
+      Button: true,
+    },
   });
   const responce = await Axios(`/header?${params}`);
   return responce.data?.attributes;

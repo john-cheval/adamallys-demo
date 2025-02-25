@@ -6,8 +6,6 @@ import HeaderTwo from "./header-two";
 import { usePathname } from "next/navigation";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MobileHeader from "./mobile-header";
-import { useQuery } from "@tanstack/react-query";
-import { getHeader } from "@/services";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,10 +66,6 @@ const menuOptions = [
 ];
 
 const HeaderLayout = ({ data }) => {
-  // const { data, error, isFetched } = useQuery({
-  //   queryKey: ["header"],
-  //   queryFn: getHeader,
-  // });
   const path = usePathname();
   return (
     <div className={`${path === "/" ? "" : "pb-4 lg:pb-8"} z-[99999] relative`}>
