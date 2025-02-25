@@ -134,9 +134,7 @@ async function getFooter() {
   const params = qs.stringify(
     {
       populate: {
-        Logo: {
-          fields: ["url"],
-        },
+        Logo: true,
         Adamallys_Group: true,
         AdamallysGroup2: true,
         AdamallysLLC: true,
@@ -144,6 +142,13 @@ async function getFooter() {
         Buttons: true,
         Side_Sticky_Links: {
           fields: ["link"],
+          populate: {
+            Icon: {
+              fields: ["url"],
+            },
+          },
+        },
+        Socials: {
           populate: {
             Icon: {
               fields: ["url"],

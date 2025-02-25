@@ -9,10 +9,12 @@ import News from "@/components/news/News";
 import { getFooter, getHomePage, getMilestones } from "@/services";
 
 export default async function Home() {
-  const milestones = await getMilestones();
-  const page = await getHomePage();
-  const { Side_Sticky_Links } = await getFooter();
-
+  const [milestones, page, footer] = await Promise.all([
+    getMilestones(),
+    getHomePage(),
+    getFooter(),
+  ]);
+  const { Side_Sticky_Links } = footer;
   const {
     BrandContent,
     CertificationsMemberships,
