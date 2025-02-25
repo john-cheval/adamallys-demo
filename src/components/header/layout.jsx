@@ -1,79 +1,85 @@
-"use client"
-import React from 'react'
-import gsap from 'gsap'
-import HeaderOne from './header-one'
-import HeaderTwo from './header-two'
-import { usePathname } from 'next/navigation'
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import MobileHeader from './mobile-header'
+"use client";
+import React from "react";
+import gsap from "gsap";
+import HeaderOne from "./header-one";
+import HeaderTwo from "./header-two";
+import { usePathname } from "next/navigation";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import MobileHeader from "./mobile-header";
+import { useQuery } from "@tanstack/react-query";
+import { getHeader } from "@/services";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const menuOptions = [
   {
-    label: 'Home',
-    href: '/',
+    label: "Home",
+    href: "/",
   },
   {
-    label: 'Who we are',
-    href: '#',
+    label: "Who we are",
+    href: "#",
     options: [
       {
-        label: 'About Us',
-        href: '/about'
+        label: "About Us",
+        href: "/about",
       },
       {
-        label: 'Ports',
-        href: '/ports'
+        label: "Ports",
+        href: "/ports",
       },
-    ]
+    ],
   },
   {
-    label: 'Product & Services',
-    href: '#',
-    options: []
+    label: "Product & Services",
+    href: "#",
+    options: [],
   },
   {
-    label: 'Distributor & Stockists',
-    href: '/distributors-&-stockists',
+    label: "Distributor & Stockists",
+    href: "/distributors-&-stockists",
   },
   {
-    label: 'Standards & Innovation',
-    href: '#',
+    label: "Standards & Innovation",
+    href: "#",
     options: [
       {
-        label: 'Sustainability at Adamallys',
-        href: '/sustainability'
+        label: "Sustainability at Adamallys",
+        href: "/sustainability",
       },
       {
-        label: 'Digitalization & Technology at Adamallys',
-        href: '/digitalization'
+        label: "Digitalization & Technology at Adamallys",
+        href: "/digitalization",
       },
       {
-        label: 'Certification & Membership',
-        href: '/certification'
+        label: "Certification & Membership",
+        href: "/certification",
       },
-    ]
+    ],
   },
   {
-    label: 'News',
-    href: '/news-&-events',
+    label: "News",
+    href: "/news-&-events",
   },
   {
-    label: 'Contact',
-    href: '/contact',
+    label: "Contact",
+    href: "/contact",
   },
 ];
 
 const HeaderLayout = ({ data }) => {
+  // const { data, error, isFetched } = useQuery({
+  //   queryKey: ["header"],
+  //   queryFn: getHeader,
+  // });
   const path = usePathname();
   return (
-    <div className={`${path === "/" ? '' : 'pb-4 lg:pb-8'} z-[99999] relative`}>
+    <div className={`${path === "/" ? "" : "pb-4 lg:pb-8"} z-[99999] relative`}>
       <HeaderOne menuOptions={menuOptions} data={data} />
       <HeaderTwo menuOptions={menuOptions} data={data} slideFromTop />
       <MobileHeader menuOptions={menuOptions} />
     </div>
-  )
-}
+  );
+};
 
-export default HeaderLayout
+export default HeaderLayout;

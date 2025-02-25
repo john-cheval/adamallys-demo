@@ -1,12 +1,28 @@
-
 const nextConfig = {
   /* config options here */
   images: {
-    domains: ['s3-alpha-sig.figma.com', 
-      "res.cloudinary.com", 
-      "adamallys-space.nyc3.digitaloceanspaces.com", 
-      "nyc3.digitaloceanspaces.com",
-      "adamallys-space.nyc3.cdn.digitaloceanspaces.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "'s3-alpha-sig.figma.com'",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "adamallys-space.nyc3.digitaloceanspaces.com",
+      },
+      {
+        protocol: "https",
+        hostname: "nyc3.digitaloceanspaces.com",
+      },
+      {
+        protocol: "https",
+        hostname: "adamallys-space.nyc3.cdn.digitaloceanspaces.com",
+      },
+    ],
   },
 };
 

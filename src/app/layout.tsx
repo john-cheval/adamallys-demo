@@ -5,10 +5,10 @@ import "./style.css";
 import Footer from "@/components/footer/footer";
 import VerticleIcon from "@/components/verticle-icon/verticle-icon";
 
-import ScrollToTopButton from '@/components/ScrollToTopButton'
-import DisableImageRightClick from '@/components/DisableImageRightClick'
+import ScrollToTopButton from "@/components/ScrollToTopButton";
+import DisableImageRightClick from "@/components/DisableImageRightClick";
 
-import localFont from 'next/font/local'
+import localFont from "next/font/local";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -18,7 +18,8 @@ import React, { lazy, Suspense } from "react";
 
 export const metadata = {
   title: "Adamallys LLC",
-  description: "Established in 1972, Adamallys LLC is a leading ship chandler in the UAE and the broader Middle East, specializing in comprehensive technical ship supplies and provisions",
+  description:
+    "Established in 1972, Adamallys LLC is a leading ship chandler in the UAE and the broader Middle East, specializing in comprehensive technical ship supplies and provisions",
   icons: {
     icon: "/favicon.ico",
   },
@@ -27,23 +28,22 @@ export const metadata = {
 const calibri = localFont({
   src: [
     {
-      path: '../../public/fonts/all/Calibri-Bold.woff2',
-      weight: '700',
-      style: 'normal',
+      path: "../../public/fonts/all/Calibri-Bold.woff2",
+      weight: "700",
+      style: "normal",
     },
     {
-      path: '../../public/fonts/all/Calibri-Light.woff2',
-      weight: '300',
-      style: 'normal',
+      path: "../../public/fonts/all/Calibri-Light.woff2",
+      weight: "300",
+      style: "normal",
     },
     {
-      path: '../../public/fonts/all/Calibri.woff2',
-      weight: '400',
-      style: 'normal',
+      path: "../../public/fonts/all/Calibri.woff2",
+      weight: "400",
+      style: "normal",
     },
   ],
-})
-
+});
 
 export default function RootLayout({
   children,
@@ -53,7 +53,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-SDYRJY2639"></Script>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-SDYRJY2639"
+        ></Script>
         <Script>
           {`
             window.dataLayer = window.dataLayer || [];
@@ -64,7 +67,6 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`antialiased ${calibri.className}`}>
-         
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -73,13 +75,12 @@ export default function RootLayout({
           pauseOnHover
           theme="colored"
         />
-        <Header/>
+        <Header />
         {children}
         <Footer />
         <VerticleIcon />
         <ScrollToTopButton />
         <DisableImageRightClick />
-       
       </body>
     </html>
   );
