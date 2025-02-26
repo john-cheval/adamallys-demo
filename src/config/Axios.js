@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 // export const Axios = axios.create({
 //   baseURL: `${process.env.NEXT_PUBLIC_BACKEND_PUBLIC_BASE_URL}/api/`,
@@ -9,26 +9,27 @@ import axios from "axios"
 //   // },
 // });
 
-
 export const Axios = async (endpoint, options = {}) => {
-  const url = `${process.env.NEXT_PUBLIC_BACKEND_PUBLIC_BASE_URL}/api${endpoint}`;
+  // const url = `${process.env.NEXT_PUBLIC_BACKEND_PUBLIC_BASE_URL}/api${endpoint}`;
+  // const url = `http://localhost:1337/api${endpoint}`;
+  const url = `https://adamallys-backend.onrender.com/api${endpoint}`;
   const defaultOptions = {
-    method: 'GET',
+    method: "GET",
     cache: "no-store",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    ...options
+    ...options,
   };
 
   try {
-    const response = await fetch(url, defaultOptions);    
+    const response = await fetch(url, defaultOptions);
     // if (!response.ok) {
     //   throw new Error(`HTTP error! Status: ${response.status}`);
     // }
     return await response.json();
   } catch (error) {
-    console.error('Fetch error:', error);
+    console.error("Fetch error:", error);
     throw error;
   }
 };
